@@ -5,7 +5,9 @@
 5. Next to that tab, select CMakeProject as the project to run instead of current document.
 6. The output once the program is run should be in a Linux console window below the code.
 https://devblogs.microsoft.com/cppblog/c-with-visual-studio-2019-and-windows-subsystem-for-linux-wsl/
-
+https://docs.microsoft.com/en-us/cpp/build/walkthrough-build-debug-wsl2?view=msvc-170
+https://docs.microsoft.com/en-us/windows/wsl/install
+https://devblogs.microsoft.com/cppblog/using-visual-studio-for-cross-platform-c-development-targeting-windows-and-linux/
 7. Compose a Docker File
 
 
