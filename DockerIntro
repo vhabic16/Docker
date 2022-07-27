@@ -1,0 +1,57 @@
+1. Create New CMake Project in Visual Studio 2019
+2. Make sure WSL and the Linux development for C++ workload are installed.
+3. Click the x64 Debug tab and select manage configurations.
+4. Select the WSL GCC Debug option.
+5. Next to that tab, select CMakeProject as the project to run instead of current document.
+6. The output once the program is run should be in a Linux console window below the code.
+https://devblogs.microsoft.com/cppblog/c-with-visual-studio-2019-and-windows-subsystem-for-linux-wsl/
+
+7. Compose a Docker File
+
+
+FROM alpine:3.14
+
+
+
+RUN apk add libstdc++
+
+
+RUN apk add gcompat
+
+
+WORKDIR C:\Users\vhabi\Desktop\LearningCMake
+
+
+
+COPY . .
+
+
+
+CMD "./CMakeProject1"   
+
+
+
+8. Add  below code to CMakeSettings.Json file 
+  {
+            "name": "linux-release",
+            "displayName": "Linux Release",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
+                    "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}"
+                }
+            }
+        }
+9. Have Docker Desktop up and running
+10. Navigate to powershell, type in docker build -t cmakeproject . 
+11. Then navigate back to Docker Desktop and run the image.
